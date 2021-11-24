@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { counterReducer } from './counter.reducer';
 import { StoreModule } from '@ngrx/store';
 import { MyCounterComponent } from './my-counter/my-counter.component'
+import { Value } from './my-counter/value.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyCounterComponent
+    MyCounterComponent,
+    Value
   ],
   imports: [
     BrowserModule,

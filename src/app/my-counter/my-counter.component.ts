@@ -8,10 +8,10 @@ import { increment, decrement, reset } from '../counter.actions';
   templateUrl: './my-counter.component.html',
 })
 export class MyCounterComponent {
-  count: Observable<{ root: any }>;
+  state: Observable<{ root: object }>;
 
   constructor(private store: Store<{ root: any}>) {
-    this.count = store.select('root', 'count');
+    this.state = store.select('root');
   }
 
   increment() {
