@@ -26,4 +26,7 @@ export class MyCounterComponent {
     this.store.dispatch(reset());
   }
 
+  addOne({ count }: any) {
+    return count + 1;
+  }
 }

@@ -1,7 +1,6 @@
 <button id="increment" (click)="increment()">Increment</button>
 
-<div >Current Count: {{ state | async | value: 'count'}} </div>
-
+<div >Current Count: {{ state | async | value: 'count'}} {{ addOne(state | async) }} </div>
 
 <button id="decrement" (click)="decrement()">Decrement</button>
 
