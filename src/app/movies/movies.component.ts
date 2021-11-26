@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MoviesService } from './movies.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   templateUrl: './movies.component.html',
@@ -8,9 +8,11 @@ import { MoviesService } from './movies.service';
 export class MoviesComponent {
   movies: any;
  
-  constructor(private movieService: MoviesService) {}
+  constructor(private store: Store<{ root: any}>) {
+    this.movies = store.select('root', 'movies');
+  }
  
   ngOnInit() {
-    this.movieService.getAll().subscribe(movies => this.movies = movies);
+    this.store.dispatch({ type: '[Movies Page] Load Movies' });
   }
 }

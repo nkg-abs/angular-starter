@@ -1,4 +1,4 @@
 <div>Movies:</div>
-<li *ngFor="let movie of movies">
-    {{ movie.title }}
+<li *ngFor="let movie of movies | async ">
+    {{ movie.name }}
 </li>

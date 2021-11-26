@@ -1,5 +1,5 @@
 import { Injectable  } from "@angular/core";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -8,6 +8,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
     constructor (private http: HttpClient) {}
   
     getAll() {
-      return this.http.get('https://jsonplaceholder.typicode.com/todos');
+      return this.http.get('https://jsonplaceholder.typicode.com/users');
     }
   }
