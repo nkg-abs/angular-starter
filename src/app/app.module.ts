@@ -8,12 +8,16 @@ import { MyCounterComponent } from './my-counter/my-counter.component'
 import { Value } from './my-counter/value.pipe';
 import { MoviesComponent } from './movies/movies.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ItemComponent } from './list/item/item.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyCounterComponent,
     MoviesComponent,
+    ItemComponent,
+    ListComponent,
     Value,
   ],
   imports: [
