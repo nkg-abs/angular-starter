@@ -10,6 +10,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ItemComponent } from './list/item/item.component';
 import { ListComponent } from './list/list.component';
+import { ChildComponent } from './my-counter/child/child.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ListComponent } from './list/list.component';
     MoviesComponent,
     ItemComponent,
     ListComponent,
+    ChildComponent,
     Value,
   ],
   imports: [

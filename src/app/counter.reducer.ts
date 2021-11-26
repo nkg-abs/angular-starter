@@ -4,6 +4,9 @@ import { increment, decrement, reset } from './counter.actions';
 
 export const initialState = {
   count: 0,
+  nested: {
+    date: new Date(),
+  }
 };
 
 
