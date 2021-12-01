@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -7,18 +7,11 @@ import { Observable } from 'rxjs';
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.css']
 })
-export class ChildComponent implements OnInit {
+export class ChildComponent{
 
   state: Observable<{ root: object }>;
 
   constructor(private store: Store<{ root: any}>) {
-    this.state = store.select('root')
-   }
-
-  ngOnInit(): void {
-  }
-
-  refreshDate() {
-    return new Date()
+    this.state = store.select('root', 'nested')
   }
 }
