@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { increment, decrement, reset } from '../counter.actions';
 import { BaseComponent } from '../core/base.component';
 
 @Component({
@@ -10,15 +9,15 @@ export class MyCounterComponent extends BaseComponent{
   override path: string = '/count';
 
   increment() {
-    this.dispatch(increment());
+    this.actions.increment();
   }
 
   decrement() {
-    this.dispatch(decrement());
+    this.actions.decrement();
   }
 
   reset() {
-    this.dispatch(reset());
+    this.actions.reset();
   }
 
   addOne(count: number) {
