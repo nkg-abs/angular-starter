@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-
+import { result } from '@laufire/utils/collection';
 @Component({
   template: '',
   selector: 'standard-component'
@@ -23,7 +23,7 @@ export class BaseComponent {
   ngOnInit() {
     this.subscription = this.store.select('root').subscribe((state) => {
       this.state = state;
-      this.data = this.state[this.path]
+      this.data = result(this.state, this.path);
     });
     this.init();
   }
