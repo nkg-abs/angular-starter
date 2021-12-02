@@ -1,18 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
 import { increment, decrement, reset, getMoviesSuccess } from './counter.actions';
-
-
-export const initialState = {
-  count: 0,
-  nested: {
-    date: new Date(),
-  },
-  movies: [],
-};
-
+import { seed } from './core/seed';
 
 export const counterReducer = createReducer(
-  initialState,
+  seed,
   on(increment, (state) => ({ ...state, count: state.count + 1})),
   on(decrement, (state) => ({ ...state, count: state.count - 1})),
   on(reset, (state) => ({ ...state, count: 0})),
