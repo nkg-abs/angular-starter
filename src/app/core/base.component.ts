@@ -1,26 +1,27 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { result } from '@laufire/utils/collection';
+
 @Component({
   template: '',
   selector: 'standard-component'
 })
 export class BaseComponent {
+  private subscription: any;
+  protected dispatch: any;
   state: any;
-  subscription: any;
-  path: string = '/';
   data: any;
-  dispatch: any;
+  path: string = '/';
 
   constructor(private store: Store<{ root: any}>) {
     // TODO: find how to pass any
-    this.dispatch = (data: any) => this.store.dispatch(data);
+    this.dispatch = (data: any) => store.dispatch(data);
   }
 
   init() {
   }
 
-  ngOnInit() {
+  protected ngOnInit() {
     this.subscription = this.store.select('root').subscribe((state) => {
       this.state = state;
       this.data = result(this.state, this.path);
@@ -28,7 +29,7 @@ export class BaseComponent {
     this.init();
   }
 
-  ngOnDestroy(){
+  protected ngOnDestroy(){
     this.subscription.unsubscribe();
   }
 }

@@ -1,32 +1,27 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { increment, decrement, reset } from '../counter.actions';
+import { BaseComponent } from '../core/base.component';
 
 @Component({
   selector: 'app-my-counter',
   templateUrl: './my-counter.component.html',
 })
-export class MyCounterComponent {
-  state: Observable<{ root: object }>;
-
-  constructor(private store: Store<{ root: any}>) {
-    this.state = store.select('root');
-  }
+export class MyCounterComponent extends BaseComponent{
+  override path: string = '/count';
 
   increment() {
-    this.store.dispatch(increment());
+    this.dispatch(increment());
   }
 
   decrement() {
-    this.store.dispatch(decrement());
+    this.dispatch(decrement());
   }
 
   reset() {
-    this.store.dispatch(reset());
+    this.dispatch(reset());
   }
 
-  addOne({ count }: any) {
+  addOne(count: number) {
     return count + 1;
   }
 }
