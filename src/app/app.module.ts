@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { counterReducer } from './counter.reducer';
 import { StoreModule } from '@ngrx/store';
@@ -14,15 +13,16 @@ import { ChildComponent } from './my-counter/child/child.component';
 import { EffectsModule } from '@ngrx/effects';
 import { MoviesEffects } from './movies/movies.effects';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     MyCounterComponent,
-    MoviesComponent,
     ItemComponent,
     ListComponent,
     ChildComponent,
     Value,
+    MoviesComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,6 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    setInterval(() => this.store.dispatch({ type: '[Movies Page] Load Movies' }), 1000);
     this.store.select('root', 'count').subscribe((count) => this.count = count);
   }
 
