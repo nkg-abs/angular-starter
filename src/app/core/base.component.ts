@@ -1,37 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { result, traverse } from '@laufire/utils/collection';
-import { actions } from './actions'
-
+import { StateManager } from './statemanager.component';
+@Injectable()
 @Component({
   template: '',
   selector: 'standard-component'
 })
 export class BaseComponent {
-  private subscription: any;
   protected dispatch: any;
   state: any;
   data: any;
-  path: string = '/';
+  path: string = '';
   actions: any;
 
-  constructor(private store: Store<{ root: any}>) {
+  constructor(private store: Store<{ root: any }>, private stateManager: StateManager) {
+    this.state = this.stateManager.state;
     this.dispatch = (data: any) => store.dispatch(data);
-    this.actions = traverse(actions, (value: any) => (data: any) => store.dispatch({ type: 'setState', data: value({state:this.state, data:data})}))
+    this.actions = this.stateManager.actions;
   }
 
   init() {
   }
 
   protected ngOnInit() {
-    this.subscription = this.store.select('root').subscribe((state) => {
+    this.stateManager.register((state: any) => {
       this.state = state;
-      this.data = result(this.state, this.path);
-    });
+      this.data = result(state, this.path);
+    })
     this.init();
-  }
-
-  protected ngOnDestroy(){
-    this.subscription.unsubscribe();
   }
 }
