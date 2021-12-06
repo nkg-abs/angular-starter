@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { BaseComponent } from 'src/app/core/base.component';
-
+import { BaseComponent } from 'src/app/core/lib/base.component';
 @Component({
   selector: 'app-child',
   templateUrl: './child.component.html',

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { actions } from "./actions";
+import { actions } from "../actions";
 import { traverse } from '@laufire/utils/collection';
 import { Store } from "@ngrx/store";
 import { BaseComponent } from "./base.component";
@@ -7,7 +7,7 @@ import { BaseComponent } from "./base.component";
 @Injectable({
   providedIn: 'root'
 })
-export class StateManager {
+export class Context {
   actions: any = {};
   state: any;
   cb: any;

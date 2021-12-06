@@ -1,15 +1,16 @@
 import { Injectable  } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { StateManager } from "../core/statemanager.component";
+import { Context } from "../core/lib/context";
+
 @Injectable({
     providedIn: 'root'
   })
   export class MoviesService {
-    constructor (private http: HttpClient, private stateManager: StateManager) {}
+    constructor (private http: HttpClient, private context: Context) {}
 
     getAll() {
       this.http.get('https://jsonplaceholder.typicode.com/users').subscribe((movies) => {
-        this.stateManager.actions.updateMovies(movies);
+        this.context.actions.updateMovies(movies);
       })
     }
   }

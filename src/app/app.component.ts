@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { BaseComponent } from './core/base.component';
+import { BaseComponent } from './core/lib/base.component';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
