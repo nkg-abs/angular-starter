@@ -7,7 +7,7 @@ import { Store } from "@ngrx/store";
   providedIn: 'root'
 })
 export class StateManager {
-  actions: object;
+  actions: any = {};
   state: any;
   cb: any;
   registers: Function[] = [];
@@ -19,8 +19,8 @@ export class StateManager {
       this.registers.map((cb) => cb(this.state));
     });
 
-    this.actions = traverse(actions, (value: any) =>  (data: any) =>
-      store.dispatch({ type: 'setState', data: value({ state: this.state, data: data })}));
+    this.actions = traverse(actions, (action: any) =>  (data: any) =>
+      store.dispatch({ type: 'setState', data: action({ state: this.state, data: data })}));
   }
 
   register(cb: Function){

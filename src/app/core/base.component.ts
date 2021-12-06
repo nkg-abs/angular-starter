@@ -1,7 +1,8 @@
 import { Component, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { result, traverse } from '@laufire/utils/collection';
+import { result } from '@laufire/utils/collection';
 import { StateManager } from './statemanager.component';
+import { MoviesService } from '../movies/movies.service';
 @Injectable()
 @Component({
   template: '',
@@ -14,7 +15,7 @@ export class BaseComponent {
   path: string = '';
   actions: any;
 
-  constructor(private store: Store<{ root: any }>, private stateManager: StateManager) {
+  constructor(private store: Store<{ root: any }>, private stateManager: StateManager, public movieService: MoviesService) {
     this.state = this.stateManager.state;
     this.dispatch = (data: any) => store.dispatch(data);
     this.actions = this.stateManager.actions;

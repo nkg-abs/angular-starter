@@ -10,10 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ItemComponent } from './list/item/item.component';
 import { ListComponent } from './list/list.component';
 import { ChildComponent } from './my-counter/child/child.component';
-import { EffectsModule } from '@ngrx/effects';
-import { MoviesEffects } from './movies/movies.effects';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +23,6 @@ import { MoviesEffects } from './movies/movies.effects';
   imports: [
     BrowserModule,
     StoreModule.forRoot({ root: counterReducer}),
-    EffectsModule.forRoot([MoviesEffects]),
     HttpClientModule,
   ],
   providers: [],

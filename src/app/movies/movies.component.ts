@@ -10,6 +10,6 @@ export class MoviesComponent extends BaseComponent{
   override path: string = "movies";
 
   override init(){
-    this.dispatch({ type: '[Movies Page] Load Movies' });
+    this.movieService.getAll();
   }
 }
