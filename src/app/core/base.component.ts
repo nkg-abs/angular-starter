@@ -14,6 +14,10 @@ export class BaseComponent {
   data: any;
   path: string = '';
   actions: any;
+  subscription: Function = (state: any) => {
+    this.state = state;
+    this.data = result(state, this.path);
+  };
 
   constructor(private store: Store<{ root: any }>, private stateManager: StateManager, public movieService: MoviesService) {
     this.state = this.stateManager.state;
@@ -25,10 +29,11 @@ export class BaseComponent {
   }
 
   protected ngOnInit() {
-    this.stateManager.register((state: any) => {
-      this.state = state;
-      this.data = result(state, this.path);
-    })
+    this.stateManager.subscribe(this);
     this.init();
+  }
+
+  protected ngOnDestroy() {
+    this.stateManager.unsubscribe(this);
   }
 }
