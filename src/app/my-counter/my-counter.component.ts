@@ -20,6 +20,8 @@ export class MyCounterComponent extends BaseComponent{
     this.actions.reset();
   }
 
+
+
   addOne(count: number) {
     return count + 1;
   }

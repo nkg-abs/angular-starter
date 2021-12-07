@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ItemComponent } from './list/item/item.component';
 import { ListComponent } from './list/list.component';
 import { ChildComponent } from './my-counter/child/child.component';
+import { CounterValueComponent } from './my-counter/counter-value/counter-value.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { ChildComponent } from './my-counter/child/child.component';
     ChildComponent,
     Value,
     MoviesComponent,
+    CounterValueComponent,
   ],
   imports: [
     BrowserModule,
