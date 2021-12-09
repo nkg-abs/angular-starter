@@ -4,14 +4,20 @@ import { StoreModule } from '@ngrx/store';
 import { counterReducer } from '../counter.reducer';
 import { MoviesComponent } from './movies.component';
 import { MoviesService } from './movies.service';
+import { DebugElement } from '@angular/core';
+
+class MockMoviesService {
+  getAll() {}
+}
 
 describe('MoviesComponent', () => {
   let component: MoviesComponent;
   let fixture: ComponentFixture<MoviesComponent>;
-  let movieServiceSpy: jasmine.SpyObj<MoviesService>;
+  let getAllSpy: any;
+  let debugElement: DebugElement;
+  let movieService: MoviesService;
 
   beforeEach(async () => {
-    const spy = jasmine.createSpyObj('MoviesService', ['getAll']);
     await TestBed.configureTestingModule({
       declarations: [ MoviesComponent ],
       imports: [
@@ -19,23 +25,22 @@ describe('MoviesComponent', () => {
         HttpClientModule
       ],
       providers: [
-        MoviesComponent,
-        { provide: MoviesService, useValue: spy }
+        MoviesService,
+        { provide: MoviesService, useClass: MockMoviesService }
       ]
     })
     .compileComponents();
-    movieServiceSpy = TestBed.inject(MoviesService) as jasmine.SpyObj<MoviesService>;
-  });
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(MoviesComponent);
+    debugElement = fixture.debugElement;
+    movieService = debugElement.injector.get(MoviesService);
+    getAllSpy = spyOn(movieService, 'getAll').and.callThrough();
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create the component and call movie services', () => {
     expect(component).toBeTruthy();
-    expect(movieServiceSpy.getAll.calls.count()).toBe(1);
-    expect(movieServiceSpy.getAll).toHaveBeenCalled();
+    expect(getAllSpy.calls.count()).toBe(1);
+    expect(getAllSpy).toHaveBeenCalled();
   });
 });
